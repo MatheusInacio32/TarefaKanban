@@ -43,10 +43,7 @@ Esses endpoints lidam com a criação, listagem, atualização e exclusão de ta
   ```json
   {
     "titulo": "Tarefa 1",
-    "descricao": "Descrição da tarefa",
-    "dataLimite": "2024-11-20",
-    "prioridade": "ALTA",
-    "status": "AFazer"
+    "descricao": "Descrição da tarefa"
   }
   ```
 
