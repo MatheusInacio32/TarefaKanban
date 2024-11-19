@@ -17,39 +17,19 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tasks")
 public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    // Listar tarefas separadas por status
-    @GetMapping("/tasks/todo")
-    public ResponseEntity<List<Tarefa>> listarTarefasAFazer() {
-        return ResponseEntity.ok(taskService.listarTarefasPorStatusOrdenadas(Status.aFazer));
-    }
 
-    @GetMapping("/tasks/in-progress")
-    public ResponseEntity<List<Tarefa>> listarTarefasEmProgresso() {
-        return ResponseEntity.ok(taskService.listarTarefasPorStatusOrdenadas(Status.EmProgresso));
-    }
-
-    @GetMapping("/tasks/done")
-    public ResponseEntity<List<Tarefa>> listarTarefasConcluidas() {
-        return ResponseEntity.ok(taskService.listarTarefasPorStatusOrdenadas(Status.Concluida));
-    }
-
-    // Filtrar tarefas por prioridade e/ou data limite
-    @GetMapping("/tasks/filter")
-    public ResponseEntity<List<Tarefa>> filtrarTarefas(
-            @RequestParam(required = false) Prioridade prioridade,
-            @RequestParam(required = false) LocalDate dataLimite) {
-        return ResponseEntity.ok(taskService.filtrarTarefas(prioridade, dataLimite));
-    }
-
-    // Relatório de tarefas atrasadas
-    @GetMapping("/tasks/late")
-    public ResponseEntity<List<Tarefa>> tarefasAtrasadas() {
-        return ResponseEntity.ok(taskService.tarefasAtrasadas());
+    // Lista as tarefas por status
+    @GetMapping("/status/{status}")
+    public List<Tarefa> listarTarefasPorStatus(@PathVariable Status status, HttpServletRequest request) {
+        // Recupera o userId do token JWT
+        String userId = (String) request.getAttribute("userId");
+        System.out.println("UserId: " + userId); // Apenas para verificar se o id foi extraído corretamente
+        return taskService.listarTarefasPorStatusOrdenadas(status);
     }
 
     @GetMapping
