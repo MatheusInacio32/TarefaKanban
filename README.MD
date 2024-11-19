@@ -1,5 +1,5 @@
 
-### **1. Autenticação**
+### **Autenticação**
 #### **Registrar um novo usuário**
 - **Método:** `POST`
 - **URL:** `http://localhost:8080/auth/register`
@@ -47,7 +47,7 @@ Esses endpoints lidam com a criação, listagem, atualização e exclusão de ta
   }
   ```
 
-#### **Listar todas as tarefas**
+#### **Listar todas as tarefas em ordem**
 - **Método:** `GET`
 - **URL:** `http://localhost:8080/task`
 - **Descrição:** Lista todas as tarefas.
@@ -67,33 +67,5 @@ Esses endpoints lidam com a criação, listagem, atualização e exclusão de ta
 - **Descrição:** Deleta uma tarefa com o ID especificado.
 - `Authorization: Bearer {token}`
 
----
-
-#### **Listar tarefas na coluna "A Fazer"**
-- **Método:** `GET`
-- **URL:** `http://localhost:8080/tasks/todo`
-- **Descrição:** Lista todas as tarefas que estão na coluna "A Fazer".
-
-#### **Listar tarefas na coluna "Em Progresso"**
-- **Método:** `GET`
-- **URL:** `http://localhost:8080/tasks/in-progress`
-- `Authorization: Bearer {token}`
-
-#### **Listar tarefas na coluna "Concluído"**
-- **Método:** `GET`
-- **URL:** `http://localhost:8080/tasks/done`
-- `Authorization: Bearer {token}`
-
-#### **Filtrar tarefas por prioridade e/ou data limite**
-- **Método:** `GET`
-- **URL:** `http://localhost:8080/tasks/filter`
-
-
-#### **Listar tarefas atrasadas**
-- **Método:** `GET`
-- **URL:** `http://localhost:8080/tasks/late`
-
-- **Cabeçalho:** 
-- `Authorization: Bearer {token}`
-
+pasta endoints com demais rotas
 ---
