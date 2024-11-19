@@ -71,7 +71,7 @@ public class TaskController {
         }
     }
     // Move uma tarefa
-    @PutMapping("/{id}/mudarStatusDaTarefa")
+    @PutMapping("/{id}/mover")
     public Tarefa moverTarefa(@PathVariable int id, HttpServletRequest request) {
         String userId = (String) request.getAttribute("userId");
         System.out.println("UserId: " + userId); // Apenas para verificar se o id foi extraído corretamente
