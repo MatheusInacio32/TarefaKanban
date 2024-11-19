@@ -1,6 +1,5 @@
 package com.example.AulaJwt.controller;
 
-
 import com.example.AulaJwt.model.Prioridade;
 import com.example.AulaJwt.model.Status;
 import com.example.AulaJwt.model.Tarefa;
@@ -71,6 +70,22 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tarefa não encontrada.");
         }
     }
+    // Move uma tarefa
+    @PutMapping("/{id}/mudarStatusDaTarefa")
+    public Tarefa moverTarefa(@PathVariable int id, HttpServletRequest request) {
+        String userId = (String) request.getAttribute("userId");
+        System.out.println("UserId: " + userId); // Apenas para verificar se o id foi extraído corretamente
+        return taskService.moverTarefa(id);
+    }
+
+    // Atualiza a prioridade de uma tarefa
+    @PutMapping("/{id}/prioridade/{prioridade}")
+    public Tarefa atualizarPrioridade(@PathVariable int id, @PathVariable Prioridade prioridade, HttpServletRequest request) {
+        String userId = (String) request.getAttribute("userId");
+        System.out.println("UserId: " + userId); // Apenas para verificar se o id foi extraído corretamente
+        return taskService.atualizarPrioridade(id, prioridade);
+    }
+
 }
 
 
